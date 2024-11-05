@@ -22,23 +22,6 @@ export async function updateUserOrders(orderData) {
     if (!response.ok) {
       throw new Error("Failed to send orders. Please reload the page.");
     }
-    if (
-      orderData === null ||
-      orderData.items === null ||
-      orderData.items.length === 0 ||
-      orderData.customer.email === null ||
-      !orderData.customer.email.includes("@") ||
-      orderData.customer.name === null ||
-      orderData.customer.name.trim() === "" ||
-      orderData.customer.street === null ||
-      orderData.customer.street.trim() === "" ||
-      orderData.customer["postal-code"] === null ||
-      orderData.customer["postal-code"].trim() === "" ||
-      orderData.customer.city === null ||
-      orderData.customer.city.trim() === ""
-    ) {
-      throw new Error("Missing some data. Please try again");
-    }
 
     const responseData = await response.json();
     return responseData.message;
