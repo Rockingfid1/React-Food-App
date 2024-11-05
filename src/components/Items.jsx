@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { fetchMeals } from "../http.js";
 import BackendError from "./BackendError.jsx";
 import { CartContext } from "../store/app-context.jsx";
+import foodImage from "./foodImages.js";
 
 export default function Items() {
   const [backendItems, setBackEndItems] = useState({
@@ -55,7 +56,7 @@ export default function Items() {
             >
               <img
                 className="w-72 rounded-t-xl"
-                src={`http://localhost:3000/${item.image}`}
+                src={foodImage(item.image)}
                 alt={item.id}
               />
               <h1 className="font-bold text-3xl font-title">{item.name}</h1>

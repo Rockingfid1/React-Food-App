@@ -8,6 +8,7 @@ export default function FormModal() {
 
     const formData = new FormData(event.target);
     const fd = Object.fromEntries(formData.entries());
+
     ctxValue.handleCartSave(fd);
 
     event.target.reset();

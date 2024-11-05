@@ -26,6 +26,7 @@ export default function AppContextProvider({ children }) {
   const [submitOrder, setSubmitOrder] = useState(false);
   const [sendError, setSendError] = useState();
   const [successModal, setSuccessModal] = useState(false);
+  const [allOrders, setAllOrders] = useState([]);
 
   function handleCartReset() {
     setCartItems([]);
@@ -90,11 +91,25 @@ export default function AppContextProvider({ children }) {
   }
 
   async function handleCartSave(order) {
+    setAllOrders((prev) => {
+      return [
+        {
+          items: cartItems,
+          customer: order,
+        },
+        ...prev,
+      ];
+    });
+
+    console.log(allOrders);
     try {
-      await updateUserOrders({
-        items: cartItems,
-        customer: order,
-      });
+      await updateUserOrders([
+        {
+          items: cartItems,
+          customer: order,
+        },
+        ...allOrders,
+      ]);
     } catch (err) {
       handleError(err.message);
     }
