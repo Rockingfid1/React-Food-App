@@ -3,7 +3,7 @@ export async function fetchMeals() {
     "https://react-food-app-8fa59-default-rtdb.firebaseio.com/meals.json"
   );
   const responseData = await response.json();
-  console.log(responseData);
+  // console.log(responseData);
   if (!response.ok) {
     throw new Error("Failed to fetch meals. Please try again");
   }

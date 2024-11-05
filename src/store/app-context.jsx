@@ -86,7 +86,7 @@ export default function AppContextProvider({ children }) {
       const newCartItem = otherItems.concat(onlyItems);
 
       setCartItems(newCartItem);
-      console.log(newCartItem);
+      // console.log(newCartItem);
     }
   }
 
@@ -101,7 +101,7 @@ export default function AppContextProvider({ children }) {
       ];
     });
 
-    console.log(allOrders);
+    // console.log(allOrders);
     try {
       await updateUserOrders([
         {
